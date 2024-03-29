@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment3.Utility
 {
-    public class SSL : ILinkedListADT
+    public class SLL : ILinkedListADT
     {
         public Node head;
         public void Add(User value, int index)
@@ -101,6 +101,7 @@ namespace Assignment3.Utility
             while (count < index)
             {
                 walker = walker.next;
+                count++;
             }
             return walker.data;
         }
@@ -110,14 +111,14 @@ namespace Assignment3.Utility
           
             Node walker = head;
             int count = 0;
-            if(walker.data == value)
+            if(walker.data.Equals(value))
             {
                 return count;
             }
             while (walker.next != null)
             {
                 count++;
-                if (walker.next.data == value)
+                if (walker.next.data.Equals(value))
                 {
                     return count;
                 }
@@ -144,14 +145,22 @@ namespace Assignment3.Utility
         {
             int count = 0;
             Node walker = head;
-            while (count < index-1)
+            if(index == 0)
             {
-                walker = walker.next;
+                head = head.next;
             }
-            Node delete = walker.next;
-            Node after = delete.next;
-            delete = null;
-            walker.next = after;
+            else
+            {
+                while (count < index - 1)
+                {
+                    walker = walker.next;
+                }
+                Node delete = walker.next;
+                Node after = delete.next;
+                delete = null;
+                walker.next = after;
+            }
+            
         }
 
         public void RemoveFirst()
