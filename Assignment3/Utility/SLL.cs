@@ -151,7 +151,7 @@ namespace Assignment3.Utility
             }
             else
             {
-                while (count < index - 1)
+                while (count < index - 2)
                 {
                     walker = walker.next;
                 }

@@ -70,19 +70,27 @@ namespace Assignment3.Tests
 
 
         [Test]
-        public void SSLRemoveHead()
+        public void SSLRemoveFirst()
         {
             User test = new User(2, "Joe Schmoe", "joe.schmoe@outlook.com", "abcdef");
-            users.Remove(0);
-            Assert.AreEqual(test, users.GetValue(users.Count()));
+            users.RemoveFirst();
+            Assert.AreEqual(test, users.GetValue(0));
         }
 
         [Test]
         public void SSLRemoveLast()
         {
             User test = new User(3, "Colonel Sanders", "chickenlover1890@gmail.com", "kfc5555");
-            users.Remove(3);
-            Assert.AreEqual(test, users.GetValue(0));
+            users.RemoveLast();
+            Assert.AreEqual(test, users.GetValue(users.Count()-1));
+        }
+
+        [Test]
+        public void SSLRemoveIndex()
+        {
+            User test = new User(3, "Colonel Sanders", "chickenlover1890@gmail.com", "kfc5555");
+            users.Remove(2);
+            Assert.AreEqual(test, users.GetValue(2));
         }
 
 
