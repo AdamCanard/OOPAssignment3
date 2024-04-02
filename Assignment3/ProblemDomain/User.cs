@@ -1,18 +1,27 @@
-﻿using System;
+﻿using Assignment3.Utility;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Assignment3
 {
+    [DataContract]
+    [KnownType(typeof(SLL))]
     public class User : IEquatable<User>
     {
+        [DataMember]
         public int Id { get; private set; }
+        [DataMember]
         public string Name { get; private set; }
+        [DataMember]
         public string Email { get; private set; }
-
+        [DataMember]
         public string Password { get; private set; }
+
+        public User() { }
 
         /// <summary>
         /// Initializes a User object.

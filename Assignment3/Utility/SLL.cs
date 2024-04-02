@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Assignment3.Utility
 {
+    [DataContract]
     public class SLL : ILinkedListADT
     {
+        [DataMember]
         public Node head;
+
+        public SLL() { }
+
         public void Add(User value, int index)
         {
             if (index < 0 || index > Count())
