@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment3.Utility
 {
-    public class SSL : ILinkedListADT
+    public class SLL : ILinkedListADT
     {
         public Node head;
         public void Add(User value, int index)

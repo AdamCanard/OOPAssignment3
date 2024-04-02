@@ -5,9 +5,9 @@ using System.Reflection.Metadata;
 
 namespace Assignment3.Tests
 {
-    internal class SSLTest
+    internal class SLLTest
     {
-        private SSL users = new();
+        private SLL users = new();
 
         [SetUp]
         public void Setup()
