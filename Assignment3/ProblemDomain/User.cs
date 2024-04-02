@@ -55,7 +55,7 @@ namespace Assignment3
         public override bool Equals(Object other)
         {
             if (!(other is User otherUser))
-			    return false;
+                return false;
 
             return Id == otherUser.Id && Name.Equals(otherUser.Name) && Email.Equals(otherUser.Email);
         }
@@ -81,6 +81,12 @@ namespace Assignment3
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Email);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Password);
             return hashCode;
+        }
+
+        // Testing Purposes Only -- DELETE FOR SUBMISSION
+        public override string ToString()
+        {
+            return $"Id: {Id} | Name: {Name} | Email: {Email} | Password: {Password}";
         }
     }
 }

@@ -11,31 +11,40 @@ namespace Assignment3.Utility
         public Node head;
         public void Add(User value, int index)
         {
+            if (index < 0 || index > Count())
+            {
+                throw new IndexOutOfRangeException();
+            }
+
             int count = 0;
             Node walker = head;
-            while(count < index)
-            {
-                walker = walker.next;
-                count++;
-            }
             Node newNode = new Node(value);
-            Node after = walker.next;
-            walker.next = newNode;
-            newNode.next = after;
+
+            if (index == 0)
+            {
+                newNode.next = walker;
+                head = newNode;
+            }
+            else 
+            {
+                Node previous = null;
+                while (count < index)
+                {
+                    previous = walker;
+                    walker = walker.next;
+                    count++;
+                }
+
+                previous.next = newNode;
+                newNode.next = walker;
+            }
         }
 
         public void AddFirst(User value)
         {
-            if (head == null)
-            {
-                head = new Node(value);
-            }
-            else
-            {
-                Node newNode = new Node(value);
-                newNode.next = head;
-                head = newNode;
-            }
+            Node newNode = new Node(value);
+            newNode.next = head;
+            head = newNode;
         }
 
         public void AddLast(User value)
@@ -97,6 +106,11 @@ namespace Assignment3.Utility
 
         public User GetValue(int index)
         {
+            if (index < 0 || index > Count() - 1)
+            {
+                throw new IndexOutOfRangeException();
+            }
+
             int count = 0;
             Node walker = head;
             while (count < index)
@@ -109,6 +123,10 @@ namespace Assignment3.Utility
 
         public int IndexOf(User value)
         {
+            if (head == null)
+            {
+                throw new IndexOutOfRangeException();
+            }
           
             Node walker = head;
             int count = 0;
@@ -127,7 +145,6 @@ namespace Assignment3.Utility
             }
 
             throw new IndexOutOfRangeException();
-
         }
 
         public bool IsEmpty()
@@ -144,15 +161,27 @@ namespace Assignment3.Utility
 
         public void Remove(int index)
         {
+            if (index < 0 || index > Count() - 1)
+            {
+                throw new IndexOutOfRangeException();
+            }
+
+            if (index == 0)
+            {
+                head = head.next;
+                return;
+            }
+
             int count = 0;
             Node walker = head;
-            while (count < index-1)
+            while (count < index - 1)
             {
                 walker = walker.next;
+                count++;
             }
             Node delete = walker.next;
             Node after = delete.next;
-            delete = null;
+            
             walker.next = after;
         }
 
@@ -161,11 +190,6 @@ namespace Assignment3.Utility
             if (head == null)
             {
                 return;
-            }
-            else if (head.next == null)
-            {
-                head = null;
-                
             }
             else
             {
@@ -196,11 +220,17 @@ namespace Assignment3.Utility
 
         public void Replace(User value, int index)
         {
+            if (index < 0 || index > Count() - 1)
+            {
+                throw new IndexOutOfRangeException();
+            }
+
             int count = 0;
             Node walker = head;
             while (count < index)
             {
                 walker = walker.next;
+                count++;
             }
             walker.data = value;
         }
