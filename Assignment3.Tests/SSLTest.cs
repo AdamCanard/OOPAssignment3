@@ -57,8 +57,9 @@ namespace Assignment3.Tests
         public void SSLAddLast()
         {
             User test = new User(0, "Test Test", "Test@email.com", "TestPassword");
-            users.AddFirst(test);
-            Assert.AreEqual(test, users.GetValue(users.Count()));
+            users.AddLast(test);
+            // The index of the last node in the list, is one less than then number of nodes in the list
+            Assert.AreEqual(test, users.GetValue(users.Count()-1));
         }
 
     }
