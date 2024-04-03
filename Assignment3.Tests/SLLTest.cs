@@ -16,6 +16,7 @@ namespace Assignment3.Tests
             users.AddLast(new User(4, "Ronald McDonald", "burgers4life63@outlook.com", "mcdonalds999"));
         }
 
+        // Test whether the IsEmpty() method works properly when the linked list is emptied.
         [Test]
         public void ClearingSLL()
         {
@@ -23,6 +24,7 @@ namespace Assignment3.Tests
             Assert.AreEqual(true, users.IsEmpty());
         }
 
+        // Test that the number of nodes in the linked list is calculated correctly.
         [Test]
         public void CountingSLL()
         {
@@ -30,6 +32,7 @@ namespace Assignment3.Tests
             Assert.AreEqual(4, users.Count());
         }
 
+        // Test that the value at the given index is returned correctly.
         [Test]
         public void GetValueSLL()
         {
@@ -37,6 +40,7 @@ namespace Assignment3.Tests
             Assert.AreEqual(test, users.GetValue(0));
         }
 
+        // Test that it correctly returns the index of the given value.
         [Test]
         public void GetIndexSLL()
         {
@@ -46,6 +50,7 @@ namespace Assignment3.Tests
             Assert.AreEqual(0, users.IndexOf(test));
         }
 
+        // Test whether the method that adds a node to the first of the linked list works correctly.
         [Test]
         public void SLLAddFirst()
         {
@@ -54,6 +59,7 @@ namespace Assignment3.Tests
             Assert.AreEqual(test, users.GetValue(0));
         }
 
+        // Test whether the method that adds a node to the end of the linked list works correctly.
         [Test]
         public void SLLAddLast()
         {
