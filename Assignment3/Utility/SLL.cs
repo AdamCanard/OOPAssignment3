@@ -14,10 +14,14 @@ namespace Assignment3.Utility
     {
         [DataMember]
         public Node head;
+
+        // Constructor of the SLL class. Initialize head.
         public SLL()
         {
             head = null;
         }
+
+        // Insert the given value into the given index.
         public void Add(User value, int index)
         {
             int count = 0;
@@ -32,6 +36,7 @@ namespace Assignment3.Utility
             newNode.next = after;
         }
 
+        // Add the given value to the first of the list.
         public void AddFirst(User value)
         {
             if (head == null)
@@ -46,6 +51,7 @@ namespace Assignment3.Utility
             }
         }
 
+        // Add the given value to the end of the list.
         public void AddLast(User value)
         {
             if (head == null)
@@ -65,11 +71,13 @@ namespace Assignment3.Utility
             }
         }
 
+        // Empty the list.
         public void Clear()
         {
             head = null;
         }
 
+        // Returns whether the list contains a specific value.
         public bool Contains(User value)
         {
             if(head == null)
@@ -88,6 +96,7 @@ namespace Assignment3.Utility
             return false;
         }
 
+        // Returns the number of nodes in the list.
         public int Count()
         {
             if(head == null)
@@ -104,6 +113,7 @@ namespace Assignment3.Utility
             return count;
         }
 
+        // Returns the value of the node at the given index.
         public User GetValue(int index)
         {
             int count = 0;
@@ -118,6 +128,7 @@ namespace Assignment3.Utility
             return walker != null ? walker.data : null;
         }
 
+        // Returns the index of the given value.
         public int IndexOf(User value)
         {
           
@@ -141,6 +152,7 @@ namespace Assignment3.Utility
 
         }
 
+        // Returns whether the list is empty.
         public bool IsEmpty()
         {
             if(head == null)
@@ -153,6 +165,7 @@ namespace Assignment3.Utility
             }
         }
 
+        // Remove the node at the given index.
         public void Remove(int index)
         {
             int count = 0;
@@ -167,6 +180,7 @@ namespace Assignment3.Utility
             walker.next = after;
         }
 
+        // Remove the first node from the list.
         public void RemoveFirst()
         {
             if (head == null)
@@ -185,6 +199,7 @@ namespace Assignment3.Utility
             }
         }
 
+        // Remove the last node from the list.
         public void RemoveLast()
         {
             if (head == null)
@@ -205,6 +220,7 @@ namespace Assignment3.Utility
             }
         }
 
+        // Replaces the value of the node at the given index with the given value.
         public void Replace(User value, int index)
         {
             int count = 0;
