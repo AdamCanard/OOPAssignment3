@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,6 +9,7 @@ namespace Assignment3
 {
     public interface ILinkedListADT
     {
+
         /// <summary>
         /// Checks if the list is empty.
         /// </summary>

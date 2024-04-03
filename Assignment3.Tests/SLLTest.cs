@@ -3,13 +3,13 @@ using Assignment3.Utility;
 
 namespace Assignment3.Tests
 {
-    internal class SSLTest
+    internal class SLLTest
     {
         private ILinkedListADT users;
         [SetUp]
         public void Setup()
         {
-            users = new SSL();
+            users = new SLL();
             users.AddLast(new User(1, "Joe Blow", "jblow@gmail.com", "password"));
             users.AddLast(new User(2, "Joe Schmoe", "joe.schmoe@outlook.com", "abcdef"));
             users.AddLast(new User(3, "Colonel Sanders", "chickenlover1890@gmail.com", "kfc5555"));
@@ -17,36 +17,37 @@ namespace Assignment3.Tests
         }
 
         [Test]
-        public void ClearingSSL()
+        public void ClearingSLL()
         {
             users.Clear();
             Assert.AreEqual(true, users.IsEmpty());
         }
 
         [Test]
-        public void CountingSSL()
+        public void CountingSLL()
         {
             
             Assert.AreEqual(4, users.Count());
         }
 
         [Test]
-        public void GetValueSSL()
+        public void GetValueSLL()
         {
             User test = new User(1, "Joe Blow", "jblow@gmail.com", "password");
             Assert.AreEqual(test, users.GetValue(0));
         }
 
         [Test]
-        public void GetIndexSSL()
+        public void GetIndexSLL()
         {
             User test = new User(1, "Joe Blow", "jblow@gmail.com", "password");
+            users.AddFirst(test);
             Console.WriteLine(users.IndexOf(test));
             Assert.AreEqual(0, users.IndexOf(test));
         }
 
         [Test]
-        public void SSLAddFirst()
+        public void SLLAddFirst()
         {
             User test = new User(0, "Test Test", "Test@email.com", "TestPassword");
             users.AddFirst(test);
@@ -54,11 +55,11 @@ namespace Assignment3.Tests
         }
 
         [Test]
-        public void SSLAddLast()
+        public void SLLAddLast()
         {
             User test = new User(0, "Test Test", "Test@email.com", "TestPassword");
             users.AddFirst(test);
-            Assert.AreEqual(test, users.GetValue(users.Count()));
+            Assert.AreEqual(test, users.GetValue(0));
         }
 
     }

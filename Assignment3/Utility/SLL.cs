@@ -1,14 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Assignment3.Utility
 {
-    public class SSL : ILinkedListADT
+    [DataContract]
+    public class SLL : ILinkedListADT
     {
+        [DataMember]
         public Node head;
+        public SLL()
+        {
+            head = null;
+        }
         public void Add(User value, int index)
         {
             int count = 0;
@@ -50,6 +59,7 @@ namespace Assignment3.Utility
                 {
                     walker = walker.next;
                 }
+ 
                 Node newNode = new Node(value);
                 walker.next = newNode;
             }
@@ -100,9 +110,12 @@ namespace Assignment3.Utility
             Node walker = head;
             while (count < index)
             {
+                if (walker == null) 
+                    return null; 
                 walker = walker.next;
+                count++;
             }
-            return walker.data;
+            return walker != null ? walker.data : null;
         }
 
         public int IndexOf(User value)
@@ -202,5 +215,6 @@ namespace Assignment3.Utility
             }
             walker.data = value;
         }
+
     }
 }

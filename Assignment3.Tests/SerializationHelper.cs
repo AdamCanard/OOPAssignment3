@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
+using Assignment3;
+using Assignment3.Utility;
+using System.Runtime.Intrinsics.X86;
 
 namespace Assignment3.Tests
 {
@@ -17,7 +20,8 @@ namespace Assignment3.Tests
         /// <param name="fileName"></param>
         public static void SerializeUsers(ILinkedListADT users, string fileName)
         {
-            DataContractSerializer serializer = new DataContractSerializer(typeof(List<User>));
+            List<Type> knownTypes = new List<Type> { typeof(SLL) };
+            DataContractSerializer serializer = new DataContractSerializer(typeof(List<User>), knownTypes);
             using (FileStream stream = File.Create(fileName))
             {
                 serializer.WriteObject(stream, users);
@@ -31,7 +35,8 @@ namespace Assignment3.Tests
         /// <returns>List of users</returns>
         public static ILinkedListADT DeserializeUsers(string fileName)
         {
-            DataContractSerializer serializer = new DataContractSerializer(typeof(List<User>));
+            List<Type> knownTypes = new List<Type> { typeof(SLL) };
+            DataContractSerializer serializer = new DataContractSerializer(typeof(List<User>), knownTypes);
             using (FileStream stream = File.OpenRead(fileName))
             {
                 return (ILinkedListADT)serializer.ReadObject(stream);
