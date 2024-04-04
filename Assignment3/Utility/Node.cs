@@ -1,4 +1,8 @@
-﻿using System;
+﻿// 2024-04-04
+// Group 1:  Adam Cunard, Simon Luna, Tyler Meekel, Sunhee Ku
+//This class is used to define the nodes of a singly linked list.
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
