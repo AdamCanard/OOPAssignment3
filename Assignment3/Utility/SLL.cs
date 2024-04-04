@@ -1,4 +1,8 @@
-﻿using System;
+﻿// 2024-04-04
+// Group 1:  Adam Cunard, Simon Luna, Tyler Meekel, Sunhee Ku
+//This SLL class implements a singly linked list, in which nodes containing data are connected in one direction.
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;

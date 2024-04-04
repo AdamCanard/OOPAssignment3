@@ -1,4 +1,8 @@
-﻿using Assignment3;
+﻿// 2024-04-04
+// Group 1:  Adam Cunard, Simon Luna, Tyler Meekel, Sunhee Ku
+// The SLLTest class contains test cases to test various features of SLL (singularly linked list).
+
+using Assignment3;
 using Assignment3.Utility;
 using NUnit.Framework.Internal;
 using System.Reflection.Metadata;
