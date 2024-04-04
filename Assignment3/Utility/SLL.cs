@@ -13,8 +13,10 @@ namespace Assignment3.Utility
         [DataMember]
         public Node head;
 
+        // Constructor of the SLL class. Initialize head.
         public SLL() { }
 
+        // Insert the given value into the given index.
         public void Add(User value, int index)
         {
             //make sure index is in range
@@ -53,6 +55,7 @@ namespace Assignment3.Utility
             }
         }
 
+        // Add the given value to the first of the list.
         public void AddFirst(User value)
         {
             //create new node
@@ -63,6 +66,7 @@ namespace Assignment3.Utility
             head = newNode;
         }
 
+        // Add the given value to the end of the list.
         public void AddLast(User value)
         {
             //if list is empty
@@ -85,11 +89,13 @@ namespace Assignment3.Utility
             }
         }
 
+        // Empty the list.
         public void Clear()
         {
             head = null;
         }
 
+        // Returns whether the list contains a specific value.
         public bool Contains(User value)
         {
             //if list is empty, return false
@@ -112,6 +118,7 @@ namespace Assignment3.Utility
             return false;
         }
 
+        // Returns the number of nodes in the list.
         public int Count()
         {
             //if list is empty return 0
@@ -130,6 +137,7 @@ namespace Assignment3.Utility
             return count;
         }
 
+        // Returns the value of the node at the given index.
         public User GetValue(int index)
         {
             //index range checkd
@@ -149,6 +157,7 @@ namespace Assignment3.Utility
             return walker.data;
         }
 
+        // Returns the index of the given value.
         public int IndexOf(User value)
         {
             //if list is empty throw exception
@@ -178,6 +187,7 @@ namespace Assignment3.Utility
             throw new IndexOutOfRangeException();
         }
 
+        // Returns whether the list is empty.
         public bool IsEmpty()
         {
             if (head == null)
@@ -190,6 +200,7 @@ namespace Assignment3.Utility
             }
         }
 
+        // Remove the node at the given index.
         public void Remove(int index)
         {
             //index range check
@@ -219,6 +230,7 @@ namespace Assignment3.Utility
             walker.next = after;
         }
 
+        // Remove the first node from the list.
         public void RemoveFirst()
         {
             if (head == null)
@@ -232,6 +244,7 @@ namespace Assignment3.Utility
             }
         }
 
+        // Remove the last node from the list.
         public void RemoveLast()
         {
             //if list is empty return
@@ -253,6 +266,7 @@ namespace Assignment3.Utility
             }
         }
 
+        // Replaces the value of the node at the given index with the given value.
         public void Replace(User value, int index)
         {
             //index range check
@@ -273,6 +287,7 @@ namespace Assignment3.Utility
             walker.data = value;
         }
 
+        // This method reverses the order of the linked list.
         public void ReverseOrder()
         {
             // If the head is null, the list is empty.
@@ -282,41 +297,47 @@ namespace Assignment3.Utility
             }
             else
             {
-                // Create some temporary pointers.
+                // Traverse the list using the walker variable.
                 Node walker = head;
                 Node tail = null;
 
-                // Check the current size of the list (this needs to be checked outside the loop, as we will increase the size of the list through each iteration and this would cause an error)
+                // Calculate the length of the list.
                 int lengthOfList = Count();
 
-                // Add each node in the list again but flip the order (using AddFirst())
+                // Iterate through all nodes in the list and add each node to the front of the list.
+                // Through this process, the order of the list is reversed.
                 for (int i = 0; i < lengthOfList; i++)
                 {
                     AddFirst(walker.data);
                     walker = walker.next;
                     if (i == 0)
                     {
-                        // After the first instance of AddFirst(), the head's position will shift, have the tail point to this new position
+                        // In the first iteration, set the new tail (the head of the original list).
                         tail = head;
                     }
                 }
-                // Now that we have flipped the order, all we have to do is remove the excess nodes, have the tail point to null.
+                // Set next of the last node to null to mark the end of the list.
                 tail.next = null;
             }
         }
 
+        // This method prints all elements of the linked list to the console.
         public void DisplayList()
         {
+            // Check if the list is empty. If empty, it returns without doing anything.
             if (head == null)
             {
                 return;
             }
             else
             {
+                // Traverse the list using the walker variable.
                 Node walker = head;
                 while (walker != null)
                 {
+                    // Print the data of the node pointed to by the current walker to the console.
                     Console.WriteLine(walker.data);
+                    // Move the walker to the next node.
                     walker = walker.next;
                 }
             }
