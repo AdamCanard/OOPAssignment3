@@ -17,30 +17,37 @@ namespace Assignment3.Utility
 
         public void Add(User value, int index)
         {
+            //make sure index is in range
             if (index < 0 || index > Count())
             {
                 throw new IndexOutOfRangeException();
             }
 
+            //create new node
             int count = 0;
             Node walker = head;
             Node newNode = new Node(value);
 
+            //if index is head, return head
             if (index == 0)
             {
                 newNode.next = walker;
                 head = newNode;
             }
-            else 
+            else
             {
+                //set previous node
                 Node previous = null;
+                //loop index times
                 while (count < index)
                 {
+                    //increment both node
                     previous = walker;
                     walker = walker.next;
                     count++;
                 }
 
+                //place new node at index
                 previous.next = newNode;
                 newNode.next = walker;
             }
@@ -48,24 +55,31 @@ namespace Assignment3.Utility
 
         public void AddFirst(User value)
         {
+            //create new node
             Node newNode = new Node(value);
+            //place node infront of head
             newNode.next = head;
+            //make new node head
             head = newNode;
         }
 
         public void AddLast(User value)
         {
+            //if list is empty
             if (head == null)
             {
+                //make head new node
                 head = new Node(value);
             }
             else
             {
+                //loop until the end of the list
                 Node walker = head;
                 while (walker.next != null)
                 {
                     walker = walker.next;
                 }
+                //create new node and place after the list
                 Node newNode = new Node(value);
                 walker.next = newNode;
             }
@@ -78,30 +92,36 @@ namespace Assignment3.Utility
 
         public bool Contains(User value)
         {
-            if(head == null)
+            //if list is empty, return false
+            if (head == null)
             {
                 return false;
             }
             Node walker = head;
-            while(walker.next != null)
+            //loop through list
+            while (walker.next != null)
             {
-                if(walker.data.Equals(value))
+                //if node equal parameter, return true
+                if (walker.data.Equals(value))
                 {
                     return true;
                 }
                 walker = walker.next;
             }
+            //else return false
             return false;
         }
 
         public int Count()
         {
-            if(head == null)
+            //if list is empty return 0
+            if (head == null)
             {
                 return 0;
             }
             Node walker = head;
             int count = 1;
+            //increase count for every node in list
             while (walker.next != null)
             {
                 count++;
@@ -112,6 +132,7 @@ namespace Assignment3.Utility
 
         public User GetValue(int index)
         {
+            //index range checkd
             if (index < 0 || index > Count() - 1)
             {
                 throw new IndexOutOfRangeException();
@@ -119,6 +140,7 @@ namespace Assignment3.Utility
 
             int count = 0;
             Node walker = head;
+            //loop until index node
             while (count < index)
             {
                 walker = walker.next;
@@ -129,17 +151,20 @@ namespace Assignment3.Utility
 
         public int IndexOf(User value)
         {
+            //if list is empty throw exception
             if (head == null)
             {
                 throw new IndexOutOfRangeException();
             }
-          
+
             Node walker = head;
             int count = 0;
-            if(walker.data.Equals(value))
+            //if head equals parameter
+            if (walker.data.Equals(value))
             {
                 return count;
             }
+            //loop list until node equals parameter 
             while (walker.next != null)
             {
                 count++;
@@ -155,7 +180,7 @@ namespace Assignment3.Utility
 
         public bool IsEmpty()
         {
-            if(head == null)
+            if (head == null)
             {
                 return true;
             }
@@ -167,11 +192,12 @@ namespace Assignment3.Utility
 
         public void Remove(int index)
         {
+            //index range check
             if (index < 0 || index > Count() - 1)
             {
                 throw new IndexOutOfRangeException();
             }
-
+            //if index 0, move head forward
             if (index == 0)
             {
                 head = head.next;
@@ -180,14 +206,16 @@ namespace Assignment3.Utility
 
             int count = 0;
             Node walker = head;
+            //loop until index node
             while (count < index - 1)
             {
                 walker = walker.next;
                 count++;
             }
+            //remove node
             Node delete = walker.next;
             Node after = delete.next;
-            
+
             walker.next = after;
         }
 
@@ -200,12 +228,13 @@ namespace Assignment3.Utility
             else
             {
                 head = head.next;
-                
+
             }
         }
 
         public void RemoveLast()
         {
+            //if list is empty return
             if (head == null)
             {
                 return;
@@ -214,7 +243,7 @@ namespace Assignment3.Utility
             {
 
                 Node walker = head;
-
+                //find the last node
                 for (int i = 0; i < this.Count() - 2; i++)
                 {
                     walker = walker.next;
@@ -226,6 +255,7 @@ namespace Assignment3.Utility
 
         public void Replace(User value, int index)
         {
+            //index range check
             if (index < 0 || index > Count() - 1)
             {
                 throw new IndexOutOfRangeException();
@@ -233,11 +263,13 @@ namespace Assignment3.Utility
 
             int count = 0;
             Node walker = head;
+            //find index node
             while (count < index)
             {
                 walker = walker.next;
                 count++;
             }
+            //replace value of node
             walker.data = value;
         }
 
