@@ -1,4 +1,9 @@
-﻿using Assignment3.Utility;
+﻿// 2024-04-04
+// Group 1:  Adam Cunard, Simon Luna, Tyler Meekel, Sunhee Ku 
+//This User class is used to represent user information and stores the user's ID, name, email, and password.
+//It also provides methods to perform password verification and object equality comparison.
+
+using Assignment3.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
